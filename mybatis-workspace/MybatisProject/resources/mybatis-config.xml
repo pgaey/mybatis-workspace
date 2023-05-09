@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- 
+	이 문서의 형식이 configuration(==환경설정)임을 알려줌
+	=> configuration태그가 전체를 감싸고 있음
+	DTD : 유효성 체크를 해줌(내부 태그들이 configuration태그안에 존재할 수 있는지 체크)
+-->
+<configuration>
+
+	<!-- setting : Mybatis 구동 시 선언할 설정들을 작성하는 영역 -->
+	<settings>
+		<!-- 만약에 null로 데이터가 전달되었다면 빈 칸이 아닌 NULL로 인식하겠다.(무조건 대문자 NULL로 작성해야함!) -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+	
+	<!-- typeAlias : VO/DTO 클래스들의 풀클래스명은 단순한 클래스명으로 사용하기 위해서 별칭을 등록할 수 있는 영역 -->
+	<typeAliases>
+		<typeAlias type="com.kh.mybatis.member.model.vo.Member" alias="member" /> <!-- 반드시 클래스 생성 후에 적어줘야함(나중에 할 예정이라고 미리 적으면 500에러) -->
+	</typeAliases>
+
+	<!-- 
+		environment : MyBatis에서 연동할 DB정보들을 등록하는 영역 
+		=> default속성으로 여러개의 id중 어떤 DB를 기본 DB로 사용할건지 꼭 지정을 해줘야한다.
+	-->
+	<environments default="development">
+		<environment id="development">
+			<!-- 
+				* transactionManager는 JDBC와 MANAGED 둘 중 하나를 선택할 수 있음
+				- JDBC : 트랜잭션을 내가 직접 관리하겠다. (수동 commit)
+				- MANAGED : 개발자가 트랜잭션에 대해 어떤 영향도 행사하지 않겠다. (자동 commit)
+			-->
+			<transactionManager type="JDBC" />
+			
+			<!-- 
+				* dataSource로는 POOLED와 UNPOOLED 둘 중 하나를 선택할 수 있음(ConnectionPool 사용여부)
+				- ConnectionPool : Connection객체를 담아둘 수 있는 영역
+									한 번 생성된 Connection객체를 담아두면 재사용해서 쓸 수 있음
+				=> POOLED : ConnectionPool을 사용하겠다.
+				=> UNPOOLED : ConnectionPool을 안쓰겠다.
+			-->
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+				<property name="username" value="MYBATIS" />
+				<property name="password" value="MYBATIS" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- mapper : 실행할 SQL문들을 기록해둔 mapper파일 등록하는 영역 -->
+	<mappers>
+		<mapper resource="/mappers/member-mapper.xml" /> <!-- 최상위폴더 classes /으로 시작, mapper에 namespace를 만든 후 등록 가능 --> 
+	</mappers>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</configuration>
+
+
+
+
+

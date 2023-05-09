@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberMapper">
+<!-- namespace : 해당 mapper파일의 고유한 별칭 -->
+<!-- 전체가 mapper태그로 감싸져 있어야 함 -->
+
+	<!-- 
+		* DML문일 경우
+		<insert id="각 SQL문의 식별자"(보편적으로 이 DML문을 실행하는 메소드명을 적음) parameterType="전달받을 자바타입(풀클래스명) 혹은 별칭">
+			쿼리문 작성
+		</insert>
+		<update></update>
+		<delete></delete>
+		
+		* SELECT문일 경우
+		
+		
+		=> parameter Type속성은 전달받을 값이 없다면 생략 가능!
+		
+		그동안 pstmt객체를 이용해서 ?(위치홀더)를 사용했지만
+		앞으로는 위치홀더 대신 해당 SQL문에 전달된 객체로부터 값을 꺼내서 사용 -> 내부적으로 getter메소드 호출!
+		값을 꺼내는 방법 #{ 필드명 또는 변수명 또는 map의 키값 }을 이용
+		EL구문 $와 헷갈리지 않게 ######
+	-->
+	
+	<!-- <insert id="insertMember" parameterType="com.kh.mybatis.member.model.vo.Member"> 별칭을 짓지 않았을 경우  -->
+	<insert id="insertMember" parameterType="member"> <!-- <typeAliases>으로 별칭을 지었을 경우 -->
+		INSERT
+		  INTO
+		  	   MEMBER
+		  	   (
+		  	   USER_NO,
+		  	   USER_ID,
+		  	   USER_PWD,
+		  	   USER_NAME,
+		  	   EMAIL,
+		  	   BIRTHDAY,
+		  	   GENDER,
+		  	   PHONE,
+		  	   ADDRESS
+		  	   )
+		VALUES
+			   (
+			   SEQ_UNO.NEXTVAL,
+			   #{userId},
+			   #{userPwd},
+			   #{userName},
+			   #{email},
+			   #{birthday},
+			   #{gender},
+			   #{phone},
+			   #{address}
+			   )
+	</insert>
+
+
+</mapper>
