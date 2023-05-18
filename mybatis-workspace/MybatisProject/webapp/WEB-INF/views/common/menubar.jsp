@@ -58,14 +58,14 @@
 	        <!-- 로그인 전 -->
 	        <form action="login.me" method="post">
 	            <table>
-	                <tr>
+	                <tr> 
 	                    <td>아이디</td>
 	                    <td><input type="text" name="userId" required></td>
-	                    <td rowspan="2"><button type="submit">로그인</button></td>
+	                    <td rowspan="2"><button style="height:60px;" type="submit">로그인</button></td>
 	                </tr>
 	                <tr>
 	                    <td>비밀번호</td>
-	                    <td><input type="passowrd" name="userPwd" required></td>
+	                    <td><input type="password" name="userPwd" required></td>
 	                </tr>
 	                <tr>
 	                    <td colspan="3">
@@ -82,7 +82,7 @@
             <table>
                 <tr>
                     <td colspan="2">
-                        <h3>누구누구님 환영합니다 ~ </h3>
+                        <h3>${ sessionScope.loginUser.userName }님 환영합니다 ~ </h3>
                     </td>
                 </tr>
                 <tr>
@@ -104,7 +104,7 @@
     <div class="nav-area" align="center">
         <div class="menu">HOME</div>
         <div class="menu">공지사항</div>
-        <div class="menu">게시판</div>
+        <div class="menu" onclick="location.href='list.bo?currentPage=1'">게시판</div>
         <div class="menu">ETC</div>
     </div>
 

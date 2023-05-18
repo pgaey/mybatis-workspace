@@ -38,6 +38,42 @@ public class MemberDao {
 		
 	}
 	
+	public Member loginMember(SqlSession sqlSession, Member m) {
+		
+//		Member loginUser = sqlSession.selectOne("memberMapper.loginMember", m);
+//		return loginUser;
+		
+		// selectOne() : 조회결과가 없다면 null 반환
+		return sqlSession.selectOne("memberMapper.loginMember", m);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

@@ -49,7 +49,7 @@ public class Template {
 		//		/는 모든 src폴더의 최상위 폴더를 의미(classes) 
 		
 		try {
-			InputStream stream = Resources.getResourceAsStream(resource); // 자원으로부터 스틞을 얻어내겠다.
+			InputStream stream = Resources.getResourceAsStream(resource); // 자원으로부터 스트림을 얻어내겠다.
 			
 			// 1단계 : new SqlSessionFactoryBuilder() : SqlSessionFactoryBuilder 객체 생성
 			// 2단계 : .build() : 통로로부터 mybatis-config.xml파일을 읽어들이면서 sqlSessionFactory객체를 만들겠다.
@@ -68,10 +68,7 @@ public class Template {
 		return sqlSession;
 	}
 	
-	
-	
-	
-	
+
 	
 	
 	

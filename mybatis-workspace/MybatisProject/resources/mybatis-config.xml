@@ -17,7 +17,9 @@
 	
 	<!-- typeAlias : VO/DTO 클래스들의 풀클래스명은 단순한 클래스명으로 사용하기 위해서 별칭을 등록할 수 있는 영역 -->
 	<typeAliases>
-		<typeAlias type="com.kh.mybatis.member.model.vo.Member" alias="member" /> <!-- 반드시 클래스 생성 후에 적어줘야함(나중에 할 예정이라고 미리 적으면 500에러) -->
+		<typeAlias type="com.kh.mybatis.member.model.vo.Member" alias="member" /> <!-- 반드시 클래스 생성 후에 적어줘야함(나중에 할 예정이라고 미리 적으면 500에러), (빈 클래스라도 가능) -->
+		<typeAlias type="com.kh.mybatis.board.model.vo.Board" alias="board" />
+		<typeAlias type="com.kh.mybatis.board.model.vo.Reply" alias="reply" />
 	</typeAliases>
 
 	<!-- 
@@ -52,6 +54,7 @@
 	<!-- mapper : 실행할 SQL문들을 기록해둔 mapper파일 등록하는 영역 -->
 	<mappers>
 		<mapper resource="/mappers/member-mapper.xml" /> <!-- 최상위폴더 classes /으로 시작, mapper에 namespace를 만든 후 등록 가능 --> 
+		<mapper resource="/mappers/board-mapper.xml" />
 	</mappers>
 
 
